@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-const InputDate = ({ id, label, value, onChange, error}) => (
+const InputDate = ({ id, label, value, onChange, error, max}) => (
     <div className="mt-5 space-y-1">
       <label className="block text-gray-700" htmlFor={id}>{label}</label>
       <input
@@ -7,7 +7,8 @@ const InputDate = ({ id, label, value, onChange, error}) => (
         type="date" 
         id={id} 
         value={value} 
-        onChange={(e) => onChange(e.target.value)} 
+        onChange={(e) => onChange(e.target.value)}
+        max={max} 
       />
       {error && <p className="text-red-500 text-sm">{error}</p>}
     </div>

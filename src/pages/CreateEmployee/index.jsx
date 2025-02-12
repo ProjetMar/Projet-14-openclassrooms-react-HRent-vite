@@ -4,10 +4,12 @@ import { useDispatch} from 'react-redux';
 import { addEmployee } from "../../features/employeeSlice";
 import InputText from "../../components/Form/InputText";
 import InputDate from "../../components/Form/InputDate";
-import Modal from "../../components/Modal/Modal";
+// import Modal from "../../components/Modal/Modal";
 import SelectOption from "../../components/Form/SelectOption";
 import {states} from "../../data/states";
 import {departments} from "../../data/departments";
+import { getTodayDate, getDateMinus16Years } from "../../utils/dateUtils";
+import Modal from "package-modal-marwam/dist/index";
 
 function CreateEmployee (){
     const [firstName, setFirstName] = useState('');
@@ -83,9 +85,9 @@ function CreateEmployee (){
 
                         <InputText id="last-name" label="Last Name" value={lastName} onChange={setLastName} error={errors.lastName}/>
 
-                        <InputDate id="date-of-birth" label="Date of Birth" value={dateOfBirth} onChange={setDateOfBirth} error={errors.dateOfBirth}/>
+                        <InputDate id="date-of-birth" label="Date of Birth" value={dateOfBirth} onChange={setDateOfBirth} error={errors.dateOfBirth} max={getDateMinus16Years()}/>
 
-                        <InputDate id="start-date" label="Start Date" value={startDate} onChange={setStartDate} error={errors.startDate}/>
+                        <InputDate id="start-date" label="Start Date" value={startDate} onChange={setStartDate} error={errors.startDate} max={getTodayDate()}/>
                     </section>
 
                     <section className="mb-6">
