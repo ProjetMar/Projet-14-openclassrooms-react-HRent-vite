@@ -14,4 +14,7 @@ export default defineConfig({
     react(),
     compression({ algorithm: 'gzip' }), // Utilise Brotli (meilleure compression)
   ],
+  build: {
+    cssCodeSplit: true, // Divise le CSS en plusieurs fichiers pour éviter les gros fichiers bloquants
+  }
 });
