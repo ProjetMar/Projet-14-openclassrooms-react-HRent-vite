@@ -1,15 +1,17 @@
 import { useTable, useSortBy, useGlobalFilter, usePagination} from 'react-table';
 import { Link } from 'react-router-dom';
 import { useMemo } from 'react';
+import { useSelector } from 'react-redux';
 import Columns from './columns';
 import './style.css'
 import GlobalFilter from './GlobalFilter';
 
 const FilteringTable = () => {
-    const listeEmployee = JSON.parse(localStorage.getItem('employees') || '[]');
+ 
+    const listeEmployee = useSelector((state) => state.employee.employees);
 
     const columns = useMemo(() => Columns, []);
-    const data = useMemo(() => listeEmployee, []);
+    const data = useMemo(() => listeEmployee, [listeEmployee]);
 
     const { getTableProps, getTableBodyProps, headerGroups, prepareRow,
         page, nextPage, previousPage, canNextPage, canPreviousPage, 

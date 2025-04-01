@@ -54,9 +54,6 @@ function CreateEmployee (){
         const newEmployee = { firstName, lastName, dateOfBirth, startDate, street, city, state, zipCode, department };
         dispatch(addEmployee(newEmployee));
     
-        const currentEmployees = JSON.parse(localStorage.getItem('employees')) || [];
-        localStorage.setItem('employees', JSON.stringify([...currentEmployees, newEmployee]));
-    
         setOpenModal(false); // Ferme le modal après l'ajout
     };
     
